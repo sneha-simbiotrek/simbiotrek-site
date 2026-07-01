@@ -64,119 +64,36 @@ if (document.fonts && document.fonts.ready) {
   });
 })();
 
-// HERO
-function initHero() {
-  const heroFrame = document.getElementById("heroFrame");
-  const progressFill = document.getElementById("progressFill");
-
-  const slideEls = [
-    document.getElementById("slide0"),
-    document.getElementById("slide1"),
-  ];
-
-  if (!heroFrame || !progressFill || !slideEls[0] || !slideEls[1]) return;
-
-  const SLIDES = [
-    "We help companies move faster with clarity defining priorities, redesigning operations, and building the systems growth depends on.",
-    "We work with growing businesses to design their next stage of evolution from direction and experience to the systems that power it.",
-  ];
-
-  function buildSlide(el, text) {
-    const p = el.querySelector("p");
-    p.innerHTML = text
-      .split(" ")
-      .map((w, i) => `<span class="word" data-i="${i}">${w}</span>`)
-      .join(" ");
-    return p.querySelectorAll(".word");
-  }
-
-  const wordSets = [
-    buildSlide(slideEls[0], SLIDES[0]),
-    buildSlide(slideEls[1], SLIDES[1]),
-  ];
-
-  // Entrance animation
-  const heroLogo = document.querySelector(".hero .logo");
-  const heroHeadline = document.querySelector(".hero__headline");
-  const heroCta = document.querySelector(".hero__cta");
-
-  if (heroLogo && heroHeadline && heroCta) {
-    gsap.set([heroLogo, heroHeadline, heroCta], { autoAlpha: 0, y: 22 });
-
-    gsap
-      .timeline({ delay: 0.15 })
-      .to(heroLogo, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out" })
-      .to(
-        heroHeadline,
-        { autoAlpha: 1, y: 0, duration: 1, ease: "power3.out" },
-        "-=0.4",
-      )
-      .to(
-        heroCta,
-        { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.out" },
-        "-=0.5",
-      );
-  }
-
-  // Card expands while hero top scrolls normally
-  ScrollTrigger.create({
-    trigger: "#hero",
-    start: "top top",
-    end: "+=100vh",
-    scrub: true,
-    onUpdate(self) {
-      const p = self.progress;
-      heroFrame.style.width = `${gsap.utils.interpolate(95, 100, p)}vw`;
-      heroFrame.style.marginTop = `${gsap.utils.interpolate(16, 0, p)}px`;
-      heroFrame.style.borderRadius = `${gsap.utils.interpolate(22, 0, p)}px`;
-    },
-  });
-
-  // Sticky reveal text and single progress bar
-  ScrollTrigger.create({
-    trigger: "#revealSection",
-    start: "top top",
-    end: "bottom bottom",
-    scrub: true,
-    onUpdate(self) {
-      const p = self.progress;
-      const idx = p < 0.5 ? 0 : 1;
-      const localP = idx === 0 ? p / 0.5 : (p - 0.5) / 0.5;
-
-      slideEls.forEach((slide, i) => {
-        slide.classList.toggle("is-active", i === idx);
-      });
-
-      progressFill.style.width = `${p * 100}%`;
-
-      const revealP = Math.min(localP / 0.9, 1);
-      const words = wordSets[idx];
-      const litCount = Math.round(revealP * words.length);
-
-      words.forEach((word, i) => {
-        word.classList.toggle("lit", i < litCount);
-      });
-
-      if (idx === 1) {
-        wordSets[0].forEach((word) => word.classList.add("lit"));
-      }
-
-      if (idx === 0 && localP < 0.05) {
-        wordSets[1].forEach((word) => word.classList.remove("lit"));
-      }
-    },
-  });
-}
-
 function initValueSection() {
   const valueSection = document.getElementById("valueSection");
   if (!valueSection) return;
 
   const valueLeft = valueSection.querySelector(".value-section__left");
   const valueLabel = valueSection.querySelector(".value-section__list-label");
-  const valueItems = gsap.utils.toArray(".value-section__list li");
+  const valueItems = gsap.utils.toArray(
+    valueSection.querySelectorAll(".value-section__list li"),
+  );
   const valueCenter = valueSection.querySelector(".value-section__center");
-  const valueCards = valueSection.querySelector(".value-section__cards");
+
+  gsap.set(valueLeft, {
+    autoAlpha: 0,
+    y: 34,
+  });
+
+  gsap.set(valueLabel, {
+    autoAlpha: 0,
+    y: 20,
+  });
+
+  gsap.set(valueItems, {
+    autoAlpha: 0,
+    x: 34,
+  });
+
+  gsap.set(valueCenter, {
+    autoAlpha: 0,
+    y: 34,
+  });
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -193,228 +110,494 @@ function initValueSection() {
     duration: 0.9,
     ease: "power3.out",
   })
-    .to(valueLabel, {
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.55,
-      ease: "power3.out",
-    })
-    .to(valueItems, {
-      autoAlpha: 1,
-      x: 0,
-      duration: 0.7,
-      stagger: 0.11,
-      ease: "power3.out",
-    })
-    .to(valueCenter, {
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.9,
-      ease: "power3.out",
-    })
-    .to(valueCards, {
-      autoAlpha: 1,
-      y: 0,
-      duration: 0.9,
-      ease: "power3.out",
-    });
-}
-
-// function initValueSection() {
-//   const valueSection = document.getElementById("valueSection");
-//   if (!valueSection) return;
-
-//   const valueLeft = valueSection.querySelector(".value-section__left");
-//   const valueLabel = valueSection.querySelector(".value-section__list-label");
-//   const valueItems = gsap.utils.toArray(".value-section__list li");
-//   const valueCenter = valueSection.querySelector(".value-section__center");
-
-//   const tl = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: valueSection,
-//       start: "top 72%",
-//       end: "bottom 58%",
-//       toggleActions: "play none none reverse",
-//     },
-//   });
-
-//   tl.to(valueLeft, {
-//     autoAlpha: 1,
-//     y: 0,
-//     duration: 0.9,
-//     ease: "power3.out",
-//   })
-//     .to(valueLabel, {
-//       autoAlpha: 1,
-//       y: 0,
-//       duration: 0.55,
-//       ease: "power3.out",
-//     })
-//     .to(valueItems, {
-//       autoAlpha: 1,
-//       x: 0,
-//       duration: 0.7,
-//       stagger: 0.11,
-//       ease: "power3.out",
-//     })
-//     .to(valueCenter, {
-//       autoAlpha: 1,
-//       y: 0,
-//       duration: 0.9,
-//       ease: "power3.out",
-//     });
-// }
-
-// // GROWTH CARDS
-// function initGrowthCards() {
-//   const growthCards = document.querySelectorAll(".growth-card");
-//   if (!growthCards.length) return;
-
-//   growthCards.forEach((card) => {
-//     card.addEventListener("mouseenter", () => {
-//       growthCards.forEach((item) => item.classList.remove("is-active"));
-//       card.classList.add("is-active");
-//     });
-
-//     card.addEventListener("focusin", () => {
-//       growthCards.forEach((item) => item.classList.remove("is-active"));
-//       card.classList.add("is-active");
-//     });
-//   });
-// }
-
-// IMPACT
-function initImpact() {
-  const impactSection = document.getElementById("impactSection");
-  if (!impactSection) return;
-
-  const impactVerticalLine = document.querySelector(
-    ".impact-grid__line--vertical",
-  );
-  const impactHorizontalLine = document.querySelector(
-    ".impact-grid__line--horizontal",
-  );
-  const impactHeadings = gsap.utils.toArray(".impact-heading__item");
-  const impactContents = gsap.utils.toArray(".impact-content__item");
-
-  gsap.set(impactVerticalLine, {
-    scaleX: 1,
-    scaleY: 0,
-    transformOrigin: "center",
-  });
-  gsap.set(impactHorizontalLine, {
-    scaleX: 0,
-    scaleY: 1,
-    transformOrigin: "center",
-  });
-  gsap.set([...impactHeadings, ...impactContents], { autoAlpha: 0, y: 26 });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: impactSection,
-      start: "top top",
-      end: "bottom bottom",
-      scrub: true,
-    },
-  });
-
-  tl.to(impactVerticalLine, { scaleY: 1, duration: 0.18, ease: "none" }, 0)
-    .to(impactHorizontalLine, { scaleX: 1, duration: 0.18, ease: "none" }, 0)
     .to(
-      [impactHeadings[0], impactContents[0]],
-      { autoAlpha: 1, y: 0, duration: 0.12, ease: "none" },
-      0.22,
-    )
-    .to({}, { duration: 0.24 })
-    .to(
-      [impactHeadings[0], impactContents[0]],
-      { autoAlpha: 0, y: -24, duration: 0.12, ease: "none" },
-      0.58,
+      valueLabel,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.55,
+        ease: "power3.out",
+      },
+      "-=0.35",
     )
     .to(
-      [impactHeadings[1], impactContents[1]],
-      { autoAlpha: 1, y: 0, duration: 0.14, ease: "none" },
-      0.72,
+      valueItems,
+      {
+        autoAlpha: 1,
+        x: 0,
+        duration: 0.7,
+        stagger: 0.14,
+        ease: "power3.out",
+      },
+      "-=0.2",
+    )
+    .to(
+      valueCenter,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "power3.out",
+      },
+      "-=0.15",
     );
 }
 
-// ACTUAL WORK
-function initActualWork() {
-  const actualWorkSection = document.getElementById("actualWorkSection");
-  if (!actualWorkSection) return;
+// GROW PANEL
+function initStage() {
+  const panel = document.querySelector(".stage__panel");
+  const rows = document.querySelectorAll(".stage__row");
+  const topLine = document.querySelector(".stage__line-top");
+  const bottomLines = document.querySelectorAll(".stage__line-bottom");
 
-  const actualWorkTexts = gsap.utils.toArray(".actual-work__text");
-  const actualWorkCard = document.querySelector(".actual-work__card");
+  if (!panel) return;
 
-  gsap.set(actualWorkTexts, { autoAlpha: 0, y: 120 });
-  gsap.set(actualWorkCard, { autoAlpha: 0, y: "120%" });
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: actualWorkSection,
-      start: "top top",
-      end: "bottom bottom",
-      scrub: true,
+  gsap.fromTo(
+    panel,
+    { "--panelW": "70%", "--panelR": "20px" },
+    {
+      "--panelW": "100%",
+      "--panelR": "0px",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".stage",
+        start: "top bottom",
+        end: "top 35%",
+        scrub: 1,
+      },
     },
-  });
-
-  actualWorkTexts.forEach((text, index) => {
-    const start = index * 0.18;
-    tl.to(text, { autoAlpha: 1, y: 0, duration: 0.12, ease: "none" }, start)
-      .to(text, { y: -180, duration: 0.22, ease: "none" }, start + 0.12)
-      .to(
-        text,
-        { autoAlpha: 0, y: -340, duration: 0.14, ease: "none" },
-        start + 0.34,
-      );
-  });
-
-  tl.to(
-    actualWorkCard,
-    { autoAlpha: 1, y: 0, duration: 0.22, ease: "none" },
-    0.68,
-  ).to(
-    actualWorkCard,
-    { y: 0, autoAlpha: 1, duration: 0.26, ease: "none" },
-    0.9,
   );
+
+  if (topLine) {
+    const topLinePath = topLine.querySelector("path");
+
+    if (topLinePath) {
+      const lineLength = topLinePath.getTotalLength();
+
+      gsap.fromTo(
+        topLinePath,
+        {
+          strokeDasharray: lineLength,
+          strokeDashoffset: lineLength,
+        },
+        {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".stage",
+            start: "top bottom",
+            end: "top 35%",
+            scrub: 1.5,
+          },
+        },
+      );
+    }
+  }
+
+  bottomLines.forEach((svgLine) => {
+    const linePath = svgLine.querySelector("path");
+
+    if (linePath) {
+      const lineLength = linePath.getTotalLength();
+
+      gsap.fromTo(
+        linePath,
+        {
+          strokeDasharray: lineLength,
+          strokeDashoffset: lineLength,
+        },
+        {
+          strokeDashoffset: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: svgLine,
+            start: "top 90%",
+            end: "top 50%",
+            scrub: 1.5,
+          },
+        },
+      );
+    }
+  });
+
+  rows.forEach((row) => {
+    const number = row.querySelector(".stage__number");
+    const title = row.querySelector(".stage__row-title");
+    const subtitle = row.querySelector(".stage__row-subtitle");
+    const text = row.querySelector(".stage__row-text");
+    const points = row.querySelectorAll(".stage__point");
+
+    const elementsToAnimate = [number, title, subtitle, text, ...points].filter(
+      Boolean,
+    );
+
+    gsap.fromTo(
+      elementsToAnimate,
+      {
+        opacity: 0,
+        y: 40,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.05,
+        ease: "none",
+        scrollTrigger: {
+          trigger: row,
+          start: "top 85%",
+          end: "top 45%",
+          scrub: 1,
+        },
+      },
+    );
+  });
 }
 
-// WHO THIS IS FOR
-function initWho() {
-  const whoSection = document.getElementById("whoSection");
-  if (!whoSection) return;
+function initTrekSection() {
+  const trekSection = document.getElementById("trekSection");
+  if (!trekSection) return;
 
-  const whoIntro = whoSection.querySelector(".who-section__intro");
-  const whoLabel = whoSection.querySelector(".who-section__list-label");
-  const whoItems = gsap.utils.toArray(".who-section__list li");
-  const whoMedia = whoSection.querySelector(".who-section__media");
+  const trekEyebrow = trekSection.querySelector(".trek-section__eyebrow");
+  const trekHeading = trekSection.querySelector(".trek-section h2");
+  const trekLine = trekSection.querySelector(".trek-section__line");
+  const trekIntro = trekSection.querySelector(".trek-section__intro");
+  const trekClosing = trekSection.querySelector(".trek-section__closing");
+  const trekCards = gsap.utils.toArray(
+    trekSection.querySelectorAll(".trek-card"),
+  );
+
+  gsap.set([trekEyebrow, trekHeading, trekLine, trekIntro, trekClosing], {
+    autoAlpha: 0,
+    y: 28,
+  });
+
+  gsap.set(trekCards, {
+    autoAlpha: 0,
+    y: 54,
+  });
 
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: whoSection,
+      trigger: trekSection,
       start: "top 72%",
       end: "bottom 58%",
       toggleActions: "play none none reverse",
     },
   });
 
-  tl.to(whoIntro, { autoAlpha: 1, y: 0, duration: 0.9, ease: "power3.out" })
+  tl.to(trekEyebrow, {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.55,
+    ease: "power3.out",
+  })
     .to(
-      whoMedia,
-      { autoAlpha: 1, y: 0, rotation: 0, duration: 1, ease: "power3.out" },
-      "-=0.65",
+      trekHeading,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.9,
+        ease: "power3.out",
+      },
+      "-=0.3",
     )
     .to(
-      whoLabel,
-      { autoAlpha: 1, y: 0, duration: 0.55, ease: "power3.out" },
-      "-=0.35",
+      trekLine,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.45,
+        ease: "power3.out",
+      },
+      "-=0.45",
     )
     .to(
-      whoItems,
-      { autoAlpha: 1, x: 0, duration: 0.7, stagger: 0.11, ease: "power3.out" },
+      trekIntro,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      },
       "-=0.25",
+    )
+    .to(
+      trekCards,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.14,
+        ease: "power3.out",
+      },
+      "-=0.25",
+    )
+    .to(
+      trekClosing,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out",
+      },
+      "-=0.35",
     );
+}
+
+function initBuildSection() {
+  const buildSection = document.getElementById("buildSection");
+  if (!buildSection) return;
+
+  const buildHeader = buildSection.querySelector(".build-section__header");
+  const buildCards = gsap.utils.toArray(
+    buildSection.querySelectorAll(".build-card"),
+  );
+
+  gsap.set(buildHeader, {
+    autoAlpha: 0,
+    y: 30,
+  });
+
+  gsap.set(buildCards, {
+    autoAlpha: 0,
+    y: 40,
+  });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: buildSection,
+      start: "top 72%",
+      end: "bottom 58%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  tl.to(buildHeader, {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.9,
+    ease: "power3.out",
+  }).to(
+    buildCards,
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.75,
+      stagger: 0.1,
+      ease: "power3.out",
+    },
+    "-=0.35",
+  );
+}
+
+function initWhySection() {
+  const whySection = document.getElementById("whySection");
+  if (!whySection) return;
+
+  const whyLeft = whySection.querySelector(".why-section__left");
+  const whyCards = gsap.utils.toArray(whySection.querySelectorAll(".why-card"));
+
+  gsap.set(whyLeft, {
+    autoAlpha: 0,
+    y: 34,
+  });
+
+  gsap.set(whyCards, {
+    autoAlpha: 0,
+    x: 44,
+  });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: whySection,
+      start: "top 72%",
+      end: "bottom 58%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  tl.to(whyLeft, {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.9,
+    ease: "power3.out",
+  }).to(
+    whyCards,
+    {
+      autoAlpha: 1,
+      x: 0,
+      duration: 0.75,
+      stagger: 0.12,
+      ease: "power3.out",
+    },
+    "-=0.35",
+  );
+}
+
+function initFitSection() {
+  const fitSection = document.getElementById("fitSection");
+  if (!fitSection) return;
+
+  const fitLeft = fitSection.querySelector(".fit-section__left");
+  const fitRight = fitSection.querySelector(".fit-section__right");
+  const fitItems = gsap.utils.toArray(
+    fitSection.querySelectorAll(".fit-section__list li"),
+  );
+
+  gsap.set([fitLeft, fitRight], {
+    autoAlpha: 0,
+    y: 34,
+  });
+
+  gsap.set(fitItems, {
+    autoAlpha: 0,
+    x: 34,
+  });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: fitSection,
+      start: "top 72%",
+      end: "bottom 58%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  tl.to(fitLeft, {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.9,
+    ease: "power3.out",
+  })
+    .to(
+      fitRight,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.75,
+        ease: "power3.out",
+      },
+      "-=0.45",
+    )
+    .to(
+      fitItems,
+      {
+        autoAlpha: 1,
+        x: 0,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: "power3.out",
+      },
+      "-=0.35",
+    );
+}
+
+function initWorkSection() {
+  const workSection = document.getElementById("workSection");
+  if (!workSection) return;
+
+  const workHeader = workSection.querySelector(".work-section__header");
+  const workCards = gsap.utils.toArray(
+    workSection.querySelectorAll(".work-card"),
+  );
+
+  gsap.set(workHeader, {
+    autoAlpha: 0,
+    y: 30,
+  });
+
+  gsap.set(workCards, {
+    autoAlpha: 0,
+    y: 40,
+  });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: workSection,
+      start: "top 72%",
+      end: "bottom 58%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  tl.to(workHeader, {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.9,
+    ease: "power3.out",
+  }).to(
+    workCards,
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.75,
+      stagger: 0.1,
+      ease: "power3.out",
+    },
+    "-=0.35",
+  );
+}
+
+function initBehindSection() {
+  const behindSection = document.getElementById("behindSection");
+  if (!behindSection) return;
+
+  const behindContent = behindSection.querySelector(".behind-section__content");
+  const behindMedia = behindSection.querySelector(".behind-section__media");
+
+  gsap.set([behindContent, behindMedia], {
+    autoAlpha: 0,
+    y: 34,
+  });
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: behindSection,
+      start: "top 72%",
+      end: "bottom 58%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  tl.to(behindContent, {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.9,
+    ease: "power3.out",
+  }).to(
+    behindMedia,
+    {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.9,
+      ease: "power3.out",
+    },
+    "-=0.45",
+  );
+}
+
+function initCtaSection() {
+  const ctaSection = document.getElementById("ctaSection");
+  if (!ctaSection) return;
+
+  const ctaCard = ctaSection.querySelector(".cta-section__card");
+
+  gsap.set(ctaCard, {
+    autoAlpha: 0,
+    y: 44,
+  });
+
+  gsap.to(ctaCard, {
+    autoAlpha: 1,
+    y: 0,
+    duration: 0.9,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ctaSection,
+      start: "top 78%",
+      toggleActions: "play none none reverse",
+    },
+  });
 }
 
 function initAllAnimations() {
@@ -423,12 +606,15 @@ function initAllAnimations() {
     return;
   }
 
-  initHero();
-  // initGrowthCards();
   initValueSection();
-  initImpact();
-  initActualWork();
-  initWho();
+  initStage();
+  initTrekSection();
+  initBuildSection();
+  initWhySection();
+  initFitSection();
+  initWorkSection();
+  initBehindSection();
+  initCtaSection();
 
   animationsInitialized = true;
 

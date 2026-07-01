@@ -16,339 +16,694 @@
 
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-    <div class="bg"></div>
+    <section class="hero">
+      <nav class="hero__nav" aria-label="Primary navigation">
+        <a href="./index.html" class="hero__brand" aria-label="Simbiotrek home">
+          <img src="./assets/simbiotrekLogo.png" alt="Simbiotrek" />
+        </a>
 
-    <div class="wrapper">
-      <section class="hero" id="hero">
-        <div class="hero__frame" id="heroFrame">
-          <div class="hero__top" id="heroTop">
-            <div class="logo">
-              <img src="./assets/simbiotrek logo.png" alt="" />
-            </div>
-
-            <div class="hero__body">
-              <h1 class="hero__headline">
-                Simbiotrek is a Value Engineering partner for growing
-                businesses.
-              </h1>
-
-              <a href="#" class="button" aria-label="Work With Us">
-                <span class="button__text">Work With Us</span>
-
-                <span class="button__arrow" aria-hidden="true">
-                  <span class="button__arrow-icon button__arrow-icon--current"
-                    >→</span
-                  >
-                  <span class="button__arrow-icon button__arrow-icon--next"
-                    >→</span
-                  >
-                </span>
-              </a>
-            </div>
-          </div>
-
-          <section class="reveal-section" id="revealSection">
-            <div class="reveal" id="reveal">
-              <div class="progress-bar">
-                <div class="progress-bar__fill" id="progressFill"></div>
-              </div>
-
-              <div class="reveal__stage">
-                <div class="reveal__slide is-active" id="slide0">
-                  <p></p>
-                </div>
-
-                <div class="reveal__slide" id="slide1">
-                  <p></p>
-                </div>
-              </div>
-            </div>
-          </section>
+        <div class="hero__menu" data-hero-menu>
+          <a href="#valueSection">The Gap</a>
+          <a href="#stage">The Trek</a>
+          <a href="#buildSection">What We Build</a>
+          <a href="#fitSection">Who It's For</a>
         </div>
-      </section>
 
-      <div class="after-section"></div>
-    </div>
+        <a href="mailto:hello@simbiotrek.com" class="hero__nav-cta">
+          Work With Us
+        </a>
+      </nav>
+
+      <div class="hero__content">
+        <div class="hero__main">
+          <h1>We build the systems your business runs on.</h1>
+
+          <div class="hero__meta">
+            <p>
+              Simbiotrek is the build-and-scale partner for growing businesses.
+              We turn your direction into working systems, prove them in real
+              use, and grow them with you as you scale.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="value-section" id="valueSection">
       <div class="value-section__inner">
         <div class="value-section__top">
           <div class="value-section__left">
-            <p>
-              Value Engineering means improving how your business creates value
-              - across operations, customer experience, delivery, and scale.
-            </p>
+            <span class="value-section__eyebrow">The Gap</span>
 
-            <p>It combines clear thinking with rapid execution.</p>
+            <h2>
+              A plan doesn't run your business.<br />
+              The systems do.
+            </h2>
+
+            <p>
+              Growing businesses often hit a ceiling in their revenue growth or,
+              worse, find that their gross profit has started declining. Many
+              have poured time and money into new tools and AI without seeing
+              real returns. But the firms that can tell you
+              <em>why and what to do</em>
+              rarely fix it, and the shops that are built to fix it rarely
+              understand the business well enough to know what's worth building.
+            </p>
           </div>
 
           <div class="value-section__right">
-            <p class="value-section__list-label">It connects:</p>
-
             <ul class="value-section__list">
-              <li>Where the business is going</li>
-              <li>How customers experience it</li>
-              <li>How operations actually run behind the scenes</li>
+              <li>
+                <span>On One Side</span>
+
+                <h3>Advisors who hand you a plan</h3>
+
+                <p>
+                  Strategy firms map the direction, then leave you at the edge
+                  with a deck. The roadmap is real - but a roadmap doesn't run
+                  your business.
+                </p>
+              </li>
+
+              <li>
+                <span>On The Other</span>
+
+                <h3>Dev shops that build in isolation</h3>
+
+                <p>
+                  Hand them a spec and they'll ship it - whether or not it's the
+                  thing that actually moves the business. Hours billed, no
+                  thesis. Hired guns.
+                </p>
+              </li>
             </ul>
           </div>
         </div>
 
         <div class="value-section__center">
-          <p>Most firms give advice. Others build in isolation.</p>
-          <p>We solve the business problem, then implement what fixes it.</p>
+          <p>
+            We can both assess and build - and we will stay with you to create
+            real value. We turn your direction into
+            <span>the systems that run the business</span>, prove them in real
+            use, and keep growing them as you scale. Not a deck. Not isolated
+            code. A <em>symbiotic</em> partner for the whole climb.
+          </p>
         </div>
+      </div>
+    </section>
 
-        <div class="value-section__cards">
-          <div class="growth-card is-active">
-            <div class="growth-card__visual growth-card__visual--signal">
-              <div class="signal-boxes">
-                <span></span>
-                <span></span>
-                <span class="is-target"></span>
-              </div>
+    <!-- STAGE -->
+    <section class="stage" id="stage">
+      <div class="stage__track">
+        <div class="stage__panel">
+          <div class="stage__top">
+            <span class="stage__eyebrow">The Trek · From Idea To Profit</span>
 
-              <div class="signal-focus">
-                <span></span>
-              </div>
-            </div>
+            <h2 class="stage__title">Three Stages. One Ascent.</h2>
 
-            <div class="growth-card__content">
-              <h3>We identify what matters</h3>
-            </div>
+            <p class="stage__intro">
+              Every engagement is a climb from a first idea to a system your
+              business runs on. We don't treat the direction as a fixed map - we
+              build the highest-value piece, prove it in real use, and re-aim as
+              the climb reveals what actually works. Start wherever the pressure
+              is most urgent; we grow the work from there.
+            </p>
           </div>
 
-          <div class="growth-card">
-            <div class="growth-card__visual growth-card__visual--flow">
-              <div class="flow-terminal">
-                <p>&gt; Audit systems</p>
-                <p>&gt; Remove blockers</p>
-                <p class="is-success">✓ Friction cleared</p>
-                <span class="terminal-cursor"></span>
-              </div>
-            </div>
+          <div class="stage__rows-wrapper">
+            <svg
+              class="stage__line-top"
+              viewBox="0 0 1000 10"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M 0 5 L 1200 5"
+                stroke="#fff"
+                stroke-width="1"
+                fill="none"
+              />
+            </svg>
 
-            <div class="growth-card__content">
-              <h3>We remove friction fast.</h3>
-            </div>
-          </div>
-
-          <div class="growth-card">
-            <div class="growth-card__visual growth-card__visual--growth">
-              <div class="growth-bars">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <div class="growth-progress">
-                <div class="growth-progress__top">
-                  <span>Growth</span>
-                  <span>100%</span>
+            <div class="stage__rows">
+              <article class="stage__row">
+                <div class="stage__row-left">
+                  <span class="stage__number">Stage 01</span>
+                  <h3 class="stage__row-title">Explore &amp; Imagine</h3>
+                  <span class="stage__row-subtitle">
+                    Yours, Ours, Or A Partner's
+                  </span>
                 </div>
 
-                <div class="growth-progress__track">
-                  <span></span>
-                </div>
-              </div>
-            </div>
+                <div class="stage__row-content">
+                  <p class="stage__row-text">
+                    What the business should do next, and why it pays. Arrive
+                    with this already - from your own leadership or a strategy
+                    partner - or develop it with us: we work alongside you to
+                    find the highest-value direction, then build it. Either way,
+                    this is base camp.
+                  </p>
 
-            <div class="growth-card__content">
-              <h3>We build what unlocks growth.</h3>
+                  <div class="stage__points">
+                    <span class="stage__point stage__point--partner">
+                      With You - Or Your Strategy Partner
+                    </span>
+
+                    <span class="stage__point stage__point--start">
+                      You start with
+                    </span>
+
+                    <span class="stage__point stage__point--result">
+                      A direction worth building
+                    </span>
+                  </div>
+                </div>
+
+                <svg
+                  class="stage__line-bottom"
+                  viewBox="0 0 1000 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M 0 5 L 1200 5"
+                    stroke="#fff"
+                    stroke-width="1"
+                    fill="none"
+                  />
+                </svg>
+              </article>
+
+              <article class="stage__row">
+                <div class="stage__row-left">
+                  <span class="stage__number">Stage 02</span>
+                  <h3 class="stage__row-title">Do &amp; Learn</h3>
+                  <span class="stage__row-subtitle">
+                    Real, Not Theoretical
+                  </span>
+                </div>
+
+                <div class="stage__row-content">
+                  <p class="stage__row-text">
+                    We turn the highest-priority idea into something real - a
+                    working proof-of-concept, an internal tool, an automated
+                    workflow, a product. Proof you can see and use, before the
+                    full commitment.
+                  </p>
+
+                  <div class="stage__points">
+                    <span class="stage__point stage__point--partner">
+                      Simbiotrek Builds
+                    </span>
+
+                    <span class="stage__point stage__point--start">
+                      You leave with
+                    </span>
+
+                    <span class="stage__point stage__point--result">
+                      A working system that validates the thesis
+                    </span>
+                  </div>
+                </div>
+
+                <svg
+                  class="stage__line-bottom"
+                  viewBox="0 0 1000 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M 0 5 L 1200 5"
+                    stroke="#fff"
+                    stroke-width="1"
+                    fill="none"
+                  />
+                </svg>
+              </article>
+
+              <article class="stage__row">
+                <div class="stage__row-left">
+                  <span class="stage__number">Stage 03</span>
+                  <h3 class="stage__row-title">Expand &amp; Capitalize</h3>
+                  <span class="stage__row-subtitle">
+                    Ongoing, Not One-Off
+                  </span>
+                </div>
+
+                <div class="stage__row-content">
+                  <p class="stage__row-text">
+                    From working system to revenue-generating capability -
+                    hardened, integrated, and adopted. We stay with you,
+                    evolving the system as the business grows. The summit, and
+                    the climb beyond it.
+                  </p>
+
+                  <div class="stage__points">
+                    <span class="stage__point stage__point--partner">
+                      Simbiotrek Scales
+                    </span>
+
+                    <span class="stage__point stage__point--start">
+                      You operate
+                    </span>
+
+                    <span class="stage__point stage__point--result">
+                      A scaled capability that moves the number
+                    </span>
+                  </div>
+                </div>
+
+                <svg
+                  class="stage__line-bottom"
+                  viewBox="0 0 1000 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M 0 5 L 1200 5"
+                    stroke="#fff"
+                    stroke-width="1"
+                    fill="none"
+                  />
+                </svg>
+              </article>
+
+              <article class="stage__row">
+                <div class="stage__row-left">
+                  <h3 class="stage__row-title">
+                    You don't have to start at the bottom. Most engagements
+                    begin where the pressure is most urgent - a stuck idea, a
+                    manual process, a system that can't keep up - and grow from
+                    there. Come with a direction already set, or we'll find it
+                    with you.
+                  </h3>
+                </div>
+              </article>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="impact-section" id="impactSection">
-      <div class="impact-sticky">
-        <div class="impact-grid">
-          <span class="impact-grid__line impact-grid__line--vertical"></span>
-          <span class="impact-grid__line impact-grid__line--horizontal"></span>
+    <section class="why-section" id="whySection">
+      <div class="why-section__bg" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-          <div class="impact-heading">
-            <h2 class="impact-heading__item is-active" data-impact-heading="0">
-              How We Create Impact
-            </h2>
+      <div class="why-section__inner">
+        <div class="why-section__left">
+          <span class="why-section__eyebrow">Why Simbiotrek</span>
 
-            <h2 class="impact-heading__item" data-impact-heading="1">
-              How We Differ
-            </h2>
-          </div>
+          <h2>
+            We don't sell hours and we don't chase products for their own sake.
+            We build the digital foundation your growth depends on - and
+            <span>stay with you as it scales.</span>
+          </h2>
+        </div>
 
-          <div class="impact-content">
-            <div class="impact-content__item is-active" data-impact-content="0">
-              <ul>
-                <li>Clarify priorities and bottlenecks</li>
-                <li>Redesign workflows for scale</li>
-                <li>Improve visibility and decision-making</li>
-                <li>Build systems, automations, and tools</li>
-                <li>Create smoother customer and team experiences</li>
-              </ul>
-            </div>
+        <div class="why-section__right">
+          <article class="why-card">
+            <span class="why-card__number">01</span>
 
-            <div class="impact-content__item" data-impact-content="1">
-              <p>Most businesses grow faster than their systems.</p>
+            <div class="why-card__content">
+              <h3>Symbiotic, not transactional</h3>
 
               <p>
-                We help businesses scale with clarity, control, and momentum.
+                The name is the model: a shared journey. Closer and longer than
+                a hired gun, more hands-on than an advisor. Your growth is the
+                metric.
               </p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+          </article>
 
-    <section class="actual-work-section" id="actualWorkSection">
-      <div class="actual-work">
-        <video class="actual-work__video" autoplay muted loop playsinline>
-          <source src="./assets/work-bg.mp4" type="video/mp4" />
-        </video>
+          <article class="why-card">
+            <span class="why-card__number">02</span>
 
-        <div class="actual-work__overlay"></div>
+            <div class="why-card__content">
+              <h3>Built for non-technical owners</h3>
 
-        <div class="actual-work__content">
-          <h2 class="actual-work__heading">WHAT WE ACTUALLY DO</h2>
-
-          <div class="actual-work__texts">
-            <p class="actual-work__text actual-work__text--one">
-              We redesign how your business runs - end to end.
-            </p>
-
-            <p class="actual-work__text actual-work__text--two">
-              From lead flow, to decisions, to team handoffs, to systems and
-              data.
-            </p>
-
-            <p class="actual-work__text actual-work__text--three">
-              We make growth easier to operate.
-            </p>
-          </div>
-
-          <div class="actual-work__card">
-            <h3>
-              Our work often starts with a focused first engagement and grows
-              from there:
-            </h3>
-
-            <div class="actual-work__card-grid">
-              <div class="actual-work__card-item">
-                <h4>Consulting to POC</h4>
-                <p>
-                  Identify the right opportunity, solve the right problem, and
-                  prove value quickly.
-                </p>
-              </div>
-
-              <div class="actual-work__card-item">
-                <h4>Concept to MVP</h4>
-                <p>
-                  Turn a validated idea into a working product, tool, workflow,
-                  or internal system.
-                </p>
-              </div>
-
-              <div class="actual-work__card-item">
-                <h4>Product to Profit</h4>
-                <p>
-                  Improve performance, scale operations, and turn systems into
-                  measurable business value.
-                </p>
-              </div>
+              <p>
+                You shouldn't have to become a software person to grow. We carry
+                the technical weight and keep the conversation in the language
+                of your business.
+              </p>
             </div>
+          </article>
 
-            <h3>
-              We start where the need is most urgent - and grow with you from
-              there.
-            </h3>
-          </div>
+          <article class="why-card">
+            <span class="why-card__number">03</span>
+
+            <div class="why-card__content">
+              <h3>Strategy and execution, connected</h3>
+
+              <p>
+                We start where the need is most urgent, prove value early, and
+                grow the work into a real product or profit-generating system.
+                One thread, end to end.
+              </p>
+            </div>
+          </article>
+
+          <article class="why-card">
+            <span class="why-card__number">04</span>
+
+            <div class="why-card__content">
+              <h3>We make AI actually pay off</h3>
+
+              <p>
+                Most businesses have spent real time and money on AI and seen
+                little back. We build with AI where it creates leverage - and
+                know where it doesn't - so what we ship costs less to build and
+                delivers the return the hype kept promising.
+              </p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="who-section" id="whoSection">
-      <div class="who-section__inner">
-        <div class="who-section__content">
-          <div class="who-section__intro">
-            <h2>
-              We work with growing businesses that know something needs to
-              change, but may not yet know exactly what should be built.
-            </h2>
-          </div>
+    <section class="build-section" id="buildSection">
+      <div class="build-section__inner">
+        <div class="build-section__header">
+          <span class="build-section__eyebrow">What We Build</span>
 
-          <div class="who-section__list-wrap">
-            <p class="who-section__list-label">You may be:</p>
+          <h2>Concrete things, for growing businesses.</h2>
 
-            <ul class="who-section__list">
-              <li>
-                Expanding in size, complexity, locations, or customer volume
-              </li>
-              <li>Operating with disconnected tools, teams, or workflows</li>
-              <li>Losing visibility as the business grows</li>
-              <li>
-                Sitting on a product, platform, or automation idea but unsure
-                how to validate it
-              </li>
-              <li>Trying to turn an internal process into a scalable system</li>
-              <li>
-                Looking for a partner who can start with consulting, prove value
-                through a POC, and grow the work into a real product or
-                profit-generating system
-              </li>
+          <p>
+            Abstract for programmers, concrete for owners. Here's what crossing
+            the gap actually looks like.
+          </p>
+        </div>
+
+        <div class="build-section__grid">
+          <article class="build-card">
+            <img 
+              src="./assets/digSys.svg"
+              alt="Business model → digital system"
+              class="build-card__image"
+            />
+
+            <div class="build-card__content">
+              <h3>Business model → digital system</h3>
+
+              <p>
+                We translate how your business actually makes money into the
+                systems that run it - not generic software, business-native
+                structure.
+              </p>
+            </div>
+          </article>
+
+          <article class="build-card">
+            <img 
+              src="./assets/workflow.svg"
+              alt="Business model → digital system"
+              class="build-card__image"
+            />
+
+            <div class="build-card__content">
+              <h3>Workflow &amp; data architecture</h3>
+
+              <p>
+                How opportunities flow, how decisions get made, how teams and
+                tools and data connect. We design the plumbing growth depends
+                on.
+              </p>
+            </div>
+          </article>
+
+          <article class="build-card">
+            <img 
+              src="./assets/automation.svg"
+              alt="Business model → digital system"
+              class="build-card__image"
+            />
+
+            <div class="build-card__content">
+              <h3>Automation</h3>
+
+              <p>
+                Manual, repetitive, error-prone work replaced with sequences
+                that run themselves - so the team scales without the headcount.
+              </p>
+            </div>
+          </article>
+
+          <article class="build-card">
+            <img 
+              src="./assets/software.svg"
+              alt="Business model → digital system"
+              class="build-card__image"
+            />
+
+            <div class="build-card__content">
+              <h3>Niche custom software</h3>
+
+              <p>
+                When off-the-shelf tools don't fit the business, we build the
+                tool that does - dashboards, engines, internal platforms.
+              </p>
+            </div>
+          </article>
+
+          <article class="build-card">
+            <img 
+              src="./assets/design.svg"
+              alt="Business model → digital system"
+              class="build-card__image"
+            />
+
+            <div class="build-card__content">
+              <h3>Experience design</h3>
+
+              <p>
+                How customers and your own team experience the business - the
+                interfaces, the journeys, the moments that decide whether it
+                sticks.
+              </p>
+            </div>
+          </article>
+
+          <article class="build-card">
+            <img 
+              src="./assets/toolOpt.svg"
+              alt="Business model → digital system"
+              class="build-card__image"
+            />
+
+            <div class="build-card__content">
+              <h3>Tool optimization</h3>
+
+              <p>
+                Often the answer isn't new software - it's making what you
+                already pay for actually work together. We integrate before we
+                build.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fit-section" id="fitSection">
+      <div class="fit-section__inner">
+        <div class="fit-section__left">
+          <span class="fit-section__eyebrow">Who This Is For</span>
+
+          <h2>Growing businesses that have outgrown how they run.</h2>
+
+          <div class="fit-section__note">
+            <span>Probably Not A Fit</span>
+
+            <ul>
+              <li>Pre-revenue startups still hunting for a model</li>
+              <li>Teams that just need hands by the hour</li>
+              <li>Anyone wanting a deck and a handoff, not a partner</li>
             </ul>
           </div>
         </div>
 
-        <div class="who-section__media">
-          <div class="who-section__image-card">
-            <img src="./assets/whowework.jpg" alt="" />
-          </div>
+        <div class="fit-section__right">
+          <ul class="fit-section__list">
+            <li>
+              <span>01</span>
+              <p>
+                Expanding in size, complexity, locations, or customer volume
+              </p>
+            </li>
+
+            <li>
+              <span>02</span>
+              <p>Running on disconnected tools, teams, and workflows</p>
+            </li>
+
+            <li>
+              <span>03</span>
+              <p>Losing visibility and control as the business grows</p>
+            </li>
+
+            <li>
+              <span>04</span>
+              <p>
+                Sitting on a product or automation idea, unsure how to validate
+                it
+              </p>
+            </li>
+
+            <li>
+              <span>05</span>
+              <p>Trying to turn an internal process into a scalable system</p>
+            </li>
+
+            <li>
+              <span>06</span>
+              <p>
+                Wanting a partner who can prove value fast, then grow with them
+              </p>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="cta-footer">
-      <div class="cta-footer__bg"></div>
+    <section class="work-section" id="workSection">
+      <div class="work-section__inner">
+        <div class="work-section__header">
+          <span class="work-section__eyebrow">How We Work</span>
 
-      <div class="cta-footer__content">
-        <div class="cta-footer__copy">
-          <p>
-            If you're thinking about the next phase of your business,<br />
-            we can help design it - and build it with you.
-          </p>
+          <h2>A retained partner, not a vendor.</h2>
 
           <p>
-            If growth is creating complexity,<br />
-            we can help fix the systems behind it.
+            We don't sell hours, and we don't hand off and leave. We embed as a
+            retained partner and grow the system with you. Here's the shape of
+            an engagement.
           </p>
+        </div>
 
-          <a href="#" class="button" aria-label="Work With Us">
-            <span class="button__text">Work With Us</span>
+        <div class="work-section__grid">
+          <article class="work-card">
+            <div class="work-card__content">
+              <h3>Start where it pays</h3>
 
-            <span class="button__arrow" aria-hidden="true">
-              <span class="button__arrow-icon button__arrow-icon--current"
-                >→</span
-              >
-              <span class="button__arrow-icon button__arrow-icon--next">→</span>
+              <p>
+                Sometimes that's an Explore &amp; Imagine engagement, working
+                out the direction with you. More often it's a defined first
+                build - fixed in scope, so you see value before the bigger
+                commitment.
+              </p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__content">
+              <h3>Prove, then stay</h3>
+
+              <p>
+                As the system proves out, we move to a retainer and keep growing
+                it with you as the business scales. The relationship is the
+                point, not a one-off deliverable.
+              </p>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-card__content">
+              <h3>Defined, not by the hour</h3>
+
+              <p>
+                Discrete pieces run as defined projects or bounties. No hourly
+                billing, no open-ended timesheets - we scope the smallest thing
+                that proves the thesis, and go.
+              </p>
+            </div>
+          </article>
+
+          <article class="work-card work-card--featured">
+            <span class="work-card__eyebrow">
+              In Practice · Geographic Enterprises
             </span>
+
+            <div class="work-card__content">
+              <h3>Ongoing partner</h3>
+
+              <p>
+                We work exactly this way as a retained strategic and execution
+                partner - translating a growing, non-technical business into
+                structured digital systems, architecting the workflows, and
+                building proprietary software where off-the-shelf tools fall
+                short.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="behind-section" id="behindSection">
+      <div class="behind-section__inner">
+        <div class="behind-section__content">
+          <span class="behind-section__eyebrow">Who's Behind It</span>
+
+          <h2>
+            Two decades of building and discovering behind every engagement.
+          </h2>
+
+          <p>
+            22 years from IBM engineering through Globant's digital practice to
+            founding Simbiotrek - building software, leading teams, and shipping
+            products across insurance, manufacturing, healthcare, and consumer
+            services.
+          </p>
+        </div>
+
+        <div class="behind-section__media">
+          <img src="./assets/ownerImg.png" alt="Simbiotrek founder portrait" />
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="ctaSection">
+      <div class="cta-section__card">
+        <div class="cta-section__content">
+          <span class="cta-section__eyebrow">Work With Us</span>
+
+          <h2>
+            What's capping<br />
+            your growth?
+          </h2>
+
+          <p>
+            If growth has stalled or your margins are slipping, we fix the
+            systems behind it. No intake form, no sales cycle - a direct
+            conversation.
+          </p>
+
+          <a href="mailto:hello@simbiotrek.com" class="cta-section__link">
+            hello@simbiotrek.com
           </a>
         </div>
 
-        <p class="cta-footer__copyright">
-          © 2026 SIMBIOTREK. ALL RIGHTS RESERVED.
-        </p>
-
-        <h2 class="cta-footer__brand">SIMBIOTREK</h2>
+        <div class="cta-section__graphic" aria-hidden="true">
+          <span class="cta-section__shape cta-section__shape--circle"></span>
+          <span class="cta-section__shape cta-section__shape--pill"></span>
+          <span class="cta-section__shape cta-section__shape--hex"></span>
+          <span class="cta-section__shape cta-section__shape--arrow"></span>
+        </div>
       </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p>Simbiotrek · Concept 2026</p>
+        <p>A Symbiotic Journey · simbiotrek.com</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollToPlugin.min.js"></script>
+
+    <script src="https://unpkg.com/lenis@1.3.17/dist/lenis.min.js"></script>
+
     <script src="main.js"></script>
   </body>
 </html>
