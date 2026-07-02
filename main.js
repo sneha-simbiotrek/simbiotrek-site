@@ -600,6 +600,75 @@ function initCtaSection() {
   });
 }
 
+function initHeroWheel() {
+  const wheel = document.querySelector("[data-hero-wheel]");
+
+  if (!wheel) return;
+
+  let rotation = 0;
+  let targetSpeed = 0.08;
+  let currentSpeed = 0.08;
+  let lastPointerAngle = null;
+  let isPointerInside = false;
+
+  const getPointerAngle = (event) => {
+    const rect = wheel.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    return (
+      (Math.atan2(event.clientY - centerY, event.clientX - centerX) * 180) /
+      Math.PI
+    );
+  };
+
+  const normalizeDelta = (delta) => {
+    if (delta > 180) return delta - 360;
+    if (delta < -180) return delta + 360;
+
+    return delta;
+  };
+
+  const render = () => {
+    currentSpeed += (targetSpeed - currentSpeed) * 0.08;
+    rotation += currentSpeed;
+
+    wheel.style.setProperty("--wheel-rotation", `${rotation}deg`);
+
+    if (!isPointerInside) {
+      targetSpeed = currentSpeed >= 0 ? 0.08 : -0.08;
+    }
+
+    requestAnimationFrame(render);
+  };
+
+  wheel.addEventListener("pointerenter", (event) => {
+    isPointerInside = true;
+    lastPointerAngle = getPointerAngle(event);
+  });
+
+  wheel.addEventListener("pointermove", (event) => {
+    if (lastPointerAngle === null) {
+      lastPointerAngle = getPointerAngle(event);
+      return;
+    }
+
+    const currentPointerAngle = getPointerAngle(event);
+    const delta = normalizeDelta(currentPointerAngle - lastPointerAngle);
+
+    targetSpeed = delta * 0.22;
+    lastPointerAngle = currentPointerAngle;
+  });
+
+  wheel.addEventListener("pointerleave", () => {
+    isPointerInside = false;
+    lastPointerAngle = null;
+    targetSpeed = currentSpeed >= 0 ? 0.08 : -0.08;
+  });
+
+  render();
+}
+
 function initAllAnimations() {
   if (animationsInitialized) {
     console.warn("Animations already initialized");
@@ -615,6 +684,7 @@ function initAllAnimations() {
   initWorkSection();
   initBehindSection();
   initCtaSection();
+  initHeroWheel();
 
   animationsInitialized = true;
 
